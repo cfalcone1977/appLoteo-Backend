@@ -29,7 +29,7 @@ import { UpdateLoteoDto } from "./dto/update-loteo.dto.js";
 @ApiTags("Loteos")
 @ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
-@Roles("ADMINISTRADOR")
+@Roles("ADMIN")
 @Controller("loteos")
 export class LoteoController {
   constructor(private readonly service: LoteoService) {}

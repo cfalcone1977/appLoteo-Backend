@@ -33,20 +33,20 @@ import { Roles } from "../../common/decorators/roles.decorator.js";
 export class PagoController {
   constructor(private readonly service: PagoService) {}
   @Get()
-  @Roles("ADMINISTRADOR", "COBRANZA", "VENTA", "CLIENTE")
+  @Roles("ADMIN", "COBRANZA", "VENTA", "CLIENTE")
   @ApiOperation({ summary: "Listar pagos" })
   findAll(@Query() q: PaginationDto, @Req() req: any) {
     return this.service.findAll(q, req.user);
   }
   @Get(":id")
-  @Roles("ADMINISTRADOR", "COBRANZA", "VENTA", "CLIENTE")
+  @Roles("ADMIN", "COBRANZA", "VENTA", "CLIENTE")
   @ApiOperation({ summary: "Obtener pago por ID" })
   @ApiParam({ name: "id", type: Number })
   getById(@Param("id", ParseIntPipe) id: number, @Req() req: any) {
     return this.service.getById(id, req.user);
   }
   @Post()
-  @Roles("ADMINISTRADOR", "COBRANZA")
+  @Roles("ADMIN", "COBRANZA")
   @ApiOperation({ summary: "Registrar pago y aplicar saldo a cuotas" })
   @ApiBody({ type: CreatePagoDto })
   @ApiResponse({ status: 201 })
@@ -54,7 +54,7 @@ export class PagoController {
     return this.service.create(dto, req.user);
   }
   @Patch(":id")
-  @Roles("ADMINISTRADOR", "COBRANZA")
+  @Roles("ADMIN", "COBRANZA")
   @ApiOperation({ summary: "Actualizar pago" })
   @ApiBody({ type: UpdatePagoDto })
   update(
@@ -65,7 +65,7 @@ export class PagoController {
     return this.service.update(id, dto, req.user);
   }
   @Delete(":id")
-  @Roles("ADMINISTRADOR", "COBRANZA")
+  @Roles("ADMIN", "COBRANZA")
   @ApiOperation({ summary: "Eliminar pago" })
   remove(@Param("id", ParseIntPipe) id: number) {
     return this.service.remove(id);

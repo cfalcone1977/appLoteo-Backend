@@ -29,7 +29,7 @@ import { LoteServicioService } from "./lote-servicio.service.js";
 @ApiTags("Lote - Servicios")
 @ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
-@Roles("ADMINISTRADOR")
+@Roles("ADMIN")
 @Controller("lote-servicios")
 export class LoteServicioController {
   constructor(private readonly service: LoteServicioService) {}

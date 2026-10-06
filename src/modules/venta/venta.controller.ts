@@ -33,20 +33,20 @@ import { Roles } from "../../common/decorators/roles.decorator.js";
 export class VentaController {
   constructor(private readonly service: VentaService) {}
   @Get()
-  @Roles("ADMINISTRADOR", "VENTA", "COBRANZA", "CLIENTE")
+  @Roles("ADMIN", "VENTA", "COBRANZA", "CLIENTE")
   @ApiOperation({ summary: "Listar ventas" })
   findAll(@Query() q: PaginationDto, @Req() req: any) {
     return this.service.findAll(q, req.user);
   }
   @Get(":id")
-  @Roles("ADMINISTRADOR", "VENTA", "COBRANZA", "CLIENTE")
+  @Roles("ADMIN", "VENTA", "COBRANZA", "CLIENTE")
   @ApiOperation({ summary: "Obtener venta por ID" })
   @ApiParam({ name: "id", type: Number })
   getById(@Param("id", ParseIntPipe) id: number, @Req() req: any) {
     return this.service.getById(id, req.user);
   }
   @Post()
-  @Roles("ADMINISTRADOR", "VENTA")
+  @Roles("ADMIN", "VENTA")
   @ApiOperation({ summary: "Registrar una venta y generar sus cuotas" })
   @ApiBody({ type: CreateVentaDto })
   @ApiResponse({ status: 201 })
@@ -54,7 +54,7 @@ export class VentaController {
     return this.service.create(dto, req.user);
   }
   @Patch(":id")
-  @Roles("ADMINISTRADOR", "VENTA")
+  @Roles("ADMIN", "VENTA")
   @ApiOperation({ summary: "Actualizar una venta" })
   @ApiBody({ type: UpdateVentaDto })
   update(
@@ -65,7 +65,7 @@ export class VentaController {
     return this.service.update(id, dto, req.user);
   }
   @Delete(":id")
-  @Roles("ADMINISTRADOR")
+  @Roles("ADMIN")
   @ApiOperation({ summary: "Eliminar una venta no activa" })
   remove(@Param("id", ParseIntPipe) id: number) {
     return this.service.remove(id);

@@ -111,7 +111,7 @@ ManzanaController = __decorate([
     ApiTags("Manzanas"),
     ApiBearerAuth(),
     UseGuards(AuthGuard, RolesGuard),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     Controller("manzanas"),
     __metadata("design:paramtypes", [ManzanaService])
 ], ManzanaController);

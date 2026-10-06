@@ -1,5 +1,5 @@
 USE loteo_balcarce_norte;
-INSERT INTO roles(nombre,descripcion) VALUES ('ADMINISTRADOR','Acceso completo'),('COBRANZA','Gestión de cobranzas'),('VENTA','Gestión de ventas'),('CLIENTE','Acceso al perfil propio') ON DUPLICATE KEY UPDATE descripcion=VALUES(descripcion);
+INSERT INTO roles(nombre,descripcion) VALUES ('ADMIN','Acceso completo'),('COBRANZA','Gestión de cobranzas'),('VENTA','Gestión de ventas'),('CLIENTE','Acceso al perfil propio') ON DUPLICATE KEY UPDATE descripcion=VALUES(descripcion);
 INSERT INTO servicios(nombre) VALUES ('Red eléctrica'),('Gas Natural'),('Cloacas'),('Agua Corriente') ON DUPLICATE KEY UPDATE nombre=VALUES(nombre);
 INSERT INTO planes_pago(nombre,cantidad_cuotas,interes,personalizado) VALUES ('Todo en cuotas',36,0,0),('Entrega 20% + cuotas',36,0,0),('Cuotas + cancelacion',36,0,0),('48 cuotas',48,0,0),('Contado',0,0,0) ON DUPLICATE KEY UPDATE cantidad_cuotas=VALUES(cantidad_cuotas);
 INSERT INTO medios_pago(nombre) VALUES ('Transferencia bancaria'),('Efectivo'),('Mercado Pago'),('Débito automático'),('Otros') ON DUPLICATE KEY UPDATE nombre=VALUES(nombre);

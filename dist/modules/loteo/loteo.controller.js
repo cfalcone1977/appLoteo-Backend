@@ -111,7 +111,7 @@ LoteoController = __decorate([
     ApiTags("Loteos"),
     ApiBearerAuth(),
     UseGuards(AuthGuard, RolesGuard),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     Controller("loteos"),
     __metadata("design:paramtypes", [LoteoService])
 ], LoteoController);

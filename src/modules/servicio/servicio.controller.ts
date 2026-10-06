@@ -29,7 +29,7 @@ import { UpdateServicioDto } from "./dto/update-servicio.dto.js";
 @ApiTags("Servicios")
 @ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
-@Roles("ADMINISTRADOR")
+@Roles("ADMIN")
 @Controller("servicios")
 export class ServicioController {
   constructor(private readonly service: ServicioService) {}

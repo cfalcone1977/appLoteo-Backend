@@ -29,7 +29,7 @@ import { UpdateManzanaDto } from "./dto/update-manzana.dto.js";
 @ApiTags("Manzanas")
 @ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
-@Roles("ADMINISTRADOR")
+@Roles("ADMIN")
 @Controller("manzanas")
 export class ManzanaController {
   constructor(private readonly service: ManzanaService) {}

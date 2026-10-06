@@ -24,14 +24,14 @@ import { Roles } from "../../common/decorators/roles.decorator.js";
 export class CobranzaController {
   constructor(private readonly service: CobranzaService) {}
   @Get("deudores")
-  @Roles("ADMINISTRADOR", "COBRANZA")
+  @Roles("ADMIN", "COBRANZA")
   @ApiOperation({ summary: "Obtener compradores con deuda" })
   @ApiResponse({ status: 200 })
   deudores() {
     return this.service.deudores();
   }
   @Get("comprador/:id")
-  @Roles("ADMINISTRADOR", "COBRANZA", "CLIENTE")
+  @Roles("ADMIN", "COBRANZA", "CLIENTE")
   @ApiOperation({ summary: "Obtener cuenta corriente de un comprador" })
   @ApiParam({ name: "id", type: Number })
   cuenta(@Param("id", ParseIntPipe) id: number, @Req() req: any) {

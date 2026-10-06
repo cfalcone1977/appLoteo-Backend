@@ -12,7 +12,7 @@ import { Roles } from "../../common/decorators/roles.decorator.js";
 @ApiTags("Reportes")
 @ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
-@Roles("ADMINISTRADOR")
+@Roles("ADMIN")
 @Controller("reportes")
 export class ReporteController {
   constructor(private readonly service: ReporteService) {}

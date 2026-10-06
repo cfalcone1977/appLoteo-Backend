@@ -29,7 +29,7 @@ import { UpdatePlanDto } from "./dto/update-plan.dto.js";
 @ApiTags("Planes de pago")
 @ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
-@Roles("ADMINISTRADOR")
+@Roles("ADMIN")
 @Controller("planes-pago")
 export class PlanController {
   constructor(private readonly service: PlanService) {}

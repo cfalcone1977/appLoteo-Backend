@@ -29,7 +29,7 @@ import { UpdateRolDto } from "./dto/update-rol.dto.js";
 @ApiTags("Roles")
 @ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
-@Roles("ADMINISTRADOR")
+@Roles("ADMIN")
 @Controller("roles")
 export class RolController {
   constructor(private readonly service: RolService) {}

@@ -111,7 +111,7 @@ ServicioController = __decorate([
     ApiTags("Servicios"),
     ApiBearerAuth(),
     UseGuards(AuthGuard, RolesGuard),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     Controller("servicios"),
     __metadata("design:paramtypes", [ServicioService])
 ], ServicioController);

@@ -7,8 +7,5 @@ export class LoginDto {
   @IsNotEmpty()
   @Length(1, 100)
   password!: string;
-  @ApiPropertyOptional({ example: "ADMIN" })
-  @IsOptional()
-  @IsString()
-  rol?: string;
+
 }

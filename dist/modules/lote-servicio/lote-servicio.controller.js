@@ -120,7 +120,7 @@ LoteServicioController = __decorate([
     ApiTags("Lote - Servicios"),
     ApiBearerAuth(),
     UseGuards(AuthGuard, RolesGuard),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     Controller("lote-servicios"),
     __metadata("design:paramtypes", [LoteServicioService])
 ], LoteServicioController);

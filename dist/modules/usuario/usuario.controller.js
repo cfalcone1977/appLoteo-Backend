@@ -91,7 +91,7 @@ UsuarioController = __decorate([
     ApiTags("Usuarios"),
     ApiBearerAuth(),
     UseGuards(AuthGuard, RolesGuard),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     Controller("usuarios"),
     __metadata("design:paramtypes", [UsuarioService])
 ], UsuarioController);

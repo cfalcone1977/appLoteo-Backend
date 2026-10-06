@@ -147,7 +147,12 @@ let LoteService = class LoteService {
                 }
                 return saved.id;
             });
-            return this.getById(id);
+            const createdLoteResponse = await this.getById(id);
+            return {
+                statusCode: HttpStatus.CREATED,
+                message: "Lote creado correctamente",
+                data: createdLoteResponse.data,
+            };
         }
         catch (error) {
             if (error?.code === "ER_DUP_ENTRY")

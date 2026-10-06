@@ -1,7 +1,7 @@
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { IsNotEmpty, IsOptional, IsString, Length } from "class-validator";
 export class CreateRolDto {
-  @ApiProperty({ example: "ADMINISTRADOR" })
+  @ApiProperty({ example: "ADMIN" })
   @IsString({ message: "El nombre del rol debe ser un texto" })
   @IsNotEmpty({ message: "El nombre del rol es obligatorio" })
   @Length(2, 50, {

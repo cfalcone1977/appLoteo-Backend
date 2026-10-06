@@ -48,7 +48,7 @@ async function main() {
         const rr = ds.getRepository(Role);
         const ur = ds.getRepository(User);
         for (const [nombre, descripcion] of [
-            ["ADMINISTRADOR", "Acceso completo"],
+            ["ADMIN", "Acceso completo"],
             ["COBRANZA", "Gestión de cobranzas"],
             ["VENTA", "Gestión de ventas"],
             ["CLIENTE", "Acceso al perfil propio"],
@@ -75,7 +75,7 @@ async function main() {
                 await ur.save(u);
             }
         }
-        await ensureUser("10000000", "Admin123!", "Administrador", "Sistema", "admin@balcarcenorte.com", "ADMINISTRADOR");
+        await ensureUser("10000000", "Admin123!", "ADMIN", "Sistema", "admin@balcarcenorte.com", "ADMIN");
         await ensureUser("20000000", "Cobranza123!", "Usuario", "Cobranzas", "cobranzas@balcarcenorte.com", "COBRANZA");
         await ensureUser("30000000", "Venta123!", "Usuario", "Ventas", "ventas@balcarcenorte.com", "VENTA");
         await ensureUser("31458902", "Cliente123!", "María Belén", "Acosta", "maria.acosta@email.com", "CLIENTE");

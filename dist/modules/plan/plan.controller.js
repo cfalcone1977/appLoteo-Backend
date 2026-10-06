@@ -111,7 +111,7 @@ PlanController = __decorate([
     ApiTags("Planes de pago"),
     ApiBearerAuth(),
     UseGuards(AuthGuard, RolesGuard),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     Controller("planes-pago"),
     __metadata("design:paramtypes", [PlanService])
 ], PlanController);

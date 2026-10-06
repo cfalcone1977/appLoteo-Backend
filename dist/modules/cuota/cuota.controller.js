@@ -111,7 +111,7 @@ CuotaController = __decorate([
     ApiTags("Cuotas"),
     ApiBearerAuth(),
     UseGuards(AuthGuard, RolesGuard),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     Controller("cuotas"),
     __metadata("design:paramtypes", [CuotaService])
 ], CuotaController);

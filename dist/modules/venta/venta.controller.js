@@ -42,7 +42,7 @@ let VentaController = class VentaController {
 };
 __decorate([
     Get(),
-    Roles("ADMINISTRADOR", "VENTA", "COBRANZA", "CLIENTE"),
+    Roles("ADMIN", "VENTA", "COBRANZA", "CLIENTE"),
     ApiOperation({ summary: "Listar ventas" }),
     __param(0, Query()),
     __param(1, Req()),
@@ -52,7 +52,7 @@ __decorate([
 ], VentaController.prototype, "findAll", null);
 __decorate([
     Get(":id"),
-    Roles("ADMINISTRADOR", "VENTA", "COBRANZA", "CLIENTE"),
+    Roles("ADMIN", "VENTA", "COBRANZA", "CLIENTE"),
     ApiOperation({ summary: "Obtener venta por ID" }),
     ApiParam({ name: "id", type: Number }),
     __param(0, Param("id", ParseIntPipe)),
@@ -63,7 +63,7 @@ __decorate([
 ], VentaController.prototype, "getById", null);
 __decorate([
     Post(),
-    Roles("ADMINISTRADOR", "VENTA"),
+    Roles("ADMIN", "VENTA"),
     ApiOperation({ summary: "Registrar una venta y generar sus cuotas" }),
     ApiBody({ type: CreateVentaDto }),
     ApiResponse({ status: 201 }),
@@ -75,7 +75,7 @@ __decorate([
 ], VentaController.prototype, "create", null);
 __decorate([
     Patch(":id"),
-    Roles("ADMINISTRADOR", "VENTA"),
+    Roles("ADMIN", "VENTA"),
     ApiOperation({ summary: "Actualizar una venta" }),
     ApiBody({ type: UpdateVentaDto }),
     __param(0, Param("id", ParseIntPipe)),
@@ -87,7 +87,7 @@ __decorate([
 ], VentaController.prototype, "update", null);
 __decorate([
     Delete(":id"),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     ApiOperation({ summary: "Eliminar una venta no activa" }),
     __param(0, Param("id", ParseIntPipe)),
     __metadata("design:type", Function),

@@ -42,7 +42,7 @@ let PagoController = class PagoController {
 };
 __decorate([
     Get(),
-    Roles("ADMINISTRADOR", "COBRANZA", "VENTA", "CLIENTE"),
+    Roles("ADMIN", "COBRANZA", "VENTA", "CLIENTE"),
     ApiOperation({ summary: "Listar pagos" }),
     __param(0, Query()),
     __param(1, Req()),
@@ -52,7 +52,7 @@ __decorate([
 ], PagoController.prototype, "findAll", null);
 __decorate([
     Get(":id"),
-    Roles("ADMINISTRADOR", "COBRANZA", "VENTA", "CLIENTE"),
+    Roles("ADMIN", "COBRANZA", "VENTA", "CLIENTE"),
     ApiOperation({ summary: "Obtener pago por ID" }),
     ApiParam({ name: "id", type: Number }),
     __param(0, Param("id", ParseIntPipe)),
@@ -63,7 +63,7 @@ __decorate([
 ], PagoController.prototype, "getById", null);
 __decorate([
     Post(),
-    Roles("ADMINISTRADOR", "COBRANZA"),
+    Roles("ADMIN", "COBRANZA"),
     ApiOperation({ summary: "Registrar pago y aplicar saldo a cuotas" }),
     ApiBody({ type: CreatePagoDto }),
     ApiResponse({ status: 201 }),
@@ -75,7 +75,7 @@ __decorate([
 ], PagoController.prototype, "create", null);
 __decorate([
     Patch(":id"),
-    Roles("ADMINISTRADOR", "COBRANZA"),
+    Roles("ADMIN", "COBRANZA"),
     ApiOperation({ summary: "Actualizar pago" }),
     ApiBody({ type: UpdatePagoDto }),
     __param(0, Param("id", ParseIntPipe)),
@@ -87,7 +87,7 @@ __decorate([
 ], PagoController.prototype, "update", null);
 __decorate([
     Delete(":id"),
-    Roles("ADMINISTRADOR", "COBRANZA"),
+    Roles("ADMIN", "COBRANZA"),
     ApiOperation({ summary: "Eliminar pago" }),
     __param(0, Param("id", ParseIntPipe)),
     __metadata("design:type", Function),

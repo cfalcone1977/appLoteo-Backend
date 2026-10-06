@@ -29,7 +29,7 @@ import { UpdatePagoMedioDto } from "./dto/update-pago-medio.dto.js";
 @ApiTags("Pagos - Medios")
 @ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
-@Roles("ADMINISTRADOR")
+@Roles("ADMIN")
 @Controller("pago-medios")
 export class PagoMedioController {
   constructor(private readonly service: PagoMedioService) {}

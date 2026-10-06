@@ -29,7 +29,7 @@ import { UpdateCuotaDto } from "./dto/update-cuota.dto.js";
 @ApiTags("Cuotas")
 @ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
-@Roles("ADMINISTRADOR")
+@Roles("ADMIN")
 @Controller("cuotas")
 export class CuotaController {
   constructor(private readonly service: CuotaService) {}

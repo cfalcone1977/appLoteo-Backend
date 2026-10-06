@@ -111,7 +111,7 @@ PagoCuotaController = __decorate([
     ApiTags("Pagos - Cuotas"),
     ApiBearerAuth(),
     UseGuards(AuthGuard, RolesGuard),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     Controller("pago-cuotas"),
     __metadata("design:paramtypes", [PagoCuotaService])
 ], PagoCuotaController);

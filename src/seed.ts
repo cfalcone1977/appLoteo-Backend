@@ -52,7 +52,7 @@ async function main() {
     const ur = ds.getRepository(User);
 
     for (const [nombre, descripcion] of [
-      ["ADMINISTRADOR", "Acceso completo"],
+      ["ADMIN", "Acceso completo"],
       ["COBRANZA", "Gestión de cobranzas"],
       ["VENTA", "Gestión de ventas"],
       ["CLIENTE", "Acceso al perfil propio"],
@@ -91,10 +91,10 @@ async function main() {
     await ensureUser(
       "10000000",
       "Admin123!",
-      "Administrador",
+      "ADMIN",
       "Sistema",
       "admin@balcarcenorte.com",
-      "ADMINISTRADOR",
+      "ADMIN",
     );
     await ensureUser(
       "20000000",

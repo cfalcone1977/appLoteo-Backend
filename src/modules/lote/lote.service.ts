@@ -115,6 +115,83 @@ export class LoteService {
     };
   }
 
+async create(dto: CreateLoteDto): Promise<ResponseDTO<any>> {
+    const manzana = await this.manzanas.findOneBy({ id: dto.manzanaId });
+    if (!manzana)
+      throw new BadRequestException("La manzana indicada no existe");
+
+    const rawServiciosIds = dto.serviciosIds ?? [];
+    const servicioIds = [
+      ...new Set(
+        rawServiciosIds
+          .map((id) => Number(id))
+          .filter((id) => !isNaN(id) && id > 0),
+      ),
+    ];
+
+    let servicios: Servicio[] = [];
+    if (servicioIds.length > 0) {
+      servicios = await this.servicios.findBy({ id: In(servicioIds) });
+
+      if (servicios.length !== servicioIds.length) {
+        const encontradosIds = servicios.map((s) => s.id);
+        const faltantes = servicioIds.filter(
+          (id) => !encontradosIds.includes(id),
+        );
+
+        throw new BadRequestException(
+          `Los siguientes IDs de servicios no existen en la base de datos: [${faltantes.join(", ")}]. Recibidos: [${servicioIds.join(", ")}]`,
+        );
+      }
+    }
+
+    try {
+      const id = await this.dataSource.transaction(async (manager) => {
+        const lote = manager.getRepository(Lote).create({
+          manzanaId: dto.manzanaId,
+          codigo: dto.codigo,
+          largo: money(dto.largo),
+          ancho: money(dto.ancho),
+          superficie: money(dto.largo) * money(dto.ancho),
+          precio: money(dto.precio),
+          estado: dto.estado ?? LoteEstado.LIBRE,
+          direccion: dto.direccion ?? null,
+          entreCalle1: dto.entreCalle1 ?? null,
+          entreCalle2: dto.entreCalle2 ?? null,
+        });
+        const saved = await manager.getRepository(Lote).save(lote);
+
+        if (servicios.length > 0) {
+          const loteServiciosToSave = servicios.map((s) =>
+            manager.getRepository(LoteServicio).create({
+              loteId: saved.id,
+              servicioId: s.id,
+            }),
+          );
+          await manager.getRepository(LoteServicio).save(loteServiciosToSave);
+        }
+        return saved.id;
+      });
+
+      // 💡 Se obtiene la data del lote recién creado y se sobreescribe el status y mensaje
+      const createdLoteResponse = await this.getById(id);
+
+      return {
+        statusCode: HttpStatus.CREATED,
+        message: "Lote creado correctamente",
+        data: createdLoteResponse.data,
+      };
+    } catch (error: any) {
+      if (error?.code === "ER_DUP_ENTRY")
+        throw new BadRequestException(
+          "Ya existe un lote con ese código dentro de la manzana",
+        );
+      if (error instanceof BadRequestException) throw error;
+      throw new InternalServerErrorException("Error interno al crear el lote");
+    }
+  }
+
+ /*
   async create(dto: CreateLoteDto): Promise<ResponseDTO<any>> {
     const manzana = await this.manzanas.findOneBy({ id: dto.manzanaId });
     if (!manzana)
@@ -182,7 +259,7 @@ export class LoteService {
       if (error instanceof BadRequestException) throw error;
       throw new InternalServerErrorException("Error interno al crear el lote");
     }
-  }
+  }*/
 
   async update(id: number, dto: UpdateLoteDto): Promise<ResponseDTO<any>> {
     ensureUpdateData(dto);

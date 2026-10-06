@@ -44,7 +44,7 @@ ReporteController = __decorate([
     ApiTags("Reportes"),
     ApiBearerAuth(),
     UseGuards(AuthGuard, RolesGuard),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     Controller("reportes"),
     __metadata("design:paramtypes", [ReporteService])
 ], ReporteController);

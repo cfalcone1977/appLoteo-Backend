@@ -30,7 +30,7 @@ let CobranzaController = class CobranzaController {
 };
 __decorate([
     Get("deudores"),
-    Roles("ADMINISTRADOR", "COBRANZA"),
+    Roles("ADMIN", "COBRANZA"),
     ApiOperation({ summary: "Obtener compradores con deuda" }),
     ApiResponse({ status: 200 }),
     __metadata("design:type", Function),
@@ -39,7 +39,7 @@ __decorate([
 ], CobranzaController.prototype, "deudores", null);
 __decorate([
     Get("comprador/:id"),
-    Roles("ADMINISTRADOR", "COBRANZA", "CLIENTE"),
+    Roles("ADMIN", "COBRANZA", "CLIENTE"),
     ApiOperation({ summary: "Obtener cuenta corriente de un comprador" }),
     ApiParam({ name: "id", type: Number }),
     __param(0, Param("id", ParseIntPipe)),

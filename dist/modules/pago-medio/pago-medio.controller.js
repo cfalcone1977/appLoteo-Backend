@@ -111,7 +111,7 @@ PagoMedioController = __decorate([
     ApiTags("Pagos - Medios"),
     ApiBearerAuth(),
     UseGuards(AuthGuard, RolesGuard),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     Controller("pago-medios"),
     __metadata("design:paramtypes", [PagoMedioService])
 ], PagoMedioController);

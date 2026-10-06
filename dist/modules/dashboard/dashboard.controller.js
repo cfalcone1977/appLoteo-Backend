@@ -34,7 +34,7 @@ DashboardController = __decorate([
     ApiTags("Dashboard"),
     ApiBearerAuth(),
     UseGuards(AuthGuard, RolesGuard),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     Controller("dashboard"),
     __metadata("design:paramtypes", [DashboardService])
 ], DashboardController);

@@ -111,7 +111,7 @@ MedioController = __decorate([
     ApiTags("Medios de pago"),
     ApiBearerAuth(),
     UseGuards(AuthGuard, RolesGuard),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     Controller("medios-pago"),
     __metadata("design:paramtypes", [MedioService])
 ], MedioController);

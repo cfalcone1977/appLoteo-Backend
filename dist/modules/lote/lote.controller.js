@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query, } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Patch, Post, Query, UseGuards, } from "@nestjs/common";
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiParam, ApiQuery, ApiResponse, ApiTags, } from "@nestjs/swagger";
 import { LoteService } from "./lote.service.js";
 import { CreateLoteDto } from "./dto/create-lote.dto.js";
@@ -19,7 +19,6 @@ import { LoteEstado } from "./entities/lote.entity.js";
 import { AuthGuard } from "../../common/guards/auth.guard.js";
 import { RolesGuard } from "../../common/guards/roles.guard.js";
 import { Roles } from "../../common/decorators/roles.decorator.js";
-import { UseGuards } from "@nestjs/common";
 let LoteController = class LoteController {
     service;
     constructor(service) {
@@ -66,9 +65,11 @@ __decorate([
 ], LoteController.prototype, "getById", null);
 __decorate([
     Post(),
+    HttpCode(HttpStatus.CREATED),
     Roles("ADMIN"),
     ApiOperation({ summary: "Crear lote" }),
     ApiBody({ type: CreateLoteDto }),
+    ApiResponse({ status: 201, description: "Lote creado correctamente" }),
     __param(0, Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [CreateLoteDto]),

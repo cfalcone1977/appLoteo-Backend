@@ -29,7 +29,7 @@ import { UpdatePagoCuotaDto } from "./dto/update-pago-cuota.dto.js";
 @ApiTags("Pagos - Cuotas")
 @ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
-@Roles("ADMINISTRADOR")
+@Roles("ADMIN")
 @Controller("pago-cuotas")
 export class PagoCuotaController {
   constructor(private readonly service: PagoCuotaService) {}

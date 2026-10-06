@@ -7,12 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { IsNotEmpty, IsOptional, IsString, Length } from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
+import { IsNotEmpty, IsString, Length } from "class-validator";
 export class LoginDto {
     dni;
     password;
-    rol;
 }
 __decorate([
     ApiProperty({ example: "10000001" }),
@@ -27,10 +26,4 @@ __decorate([
     Length(1, 100),
     __metadata("design:type", String)
 ], LoginDto.prototype, "password", void 0);
-__decorate([
-    ApiPropertyOptional({ example: "ADMIN" }),
-    IsOptional(),
-    IsString(),
-    __metadata("design:type", String)
-], LoginDto.prototype, "rol", void 0);
 //# sourceMappingURL=login.dto.js.map

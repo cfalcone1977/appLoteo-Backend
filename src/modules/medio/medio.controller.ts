@@ -29,7 +29,7 @@ import { UpdateMedioDto } from "./dto/update-medio.dto.js";
 @ApiTags("Medios de pago")
 @ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
-@Roles("ADMINISTRADOR")
+@Roles("ADMIN")
 @Controller("medios-pago")
 export class MedioController {
   constructor(private readonly service: MedioService) {}

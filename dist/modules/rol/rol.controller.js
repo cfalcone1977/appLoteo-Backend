@@ -111,7 +111,7 @@ RolController = __decorate([
     ApiTags("Roles"),
     ApiBearerAuth(),
     UseGuards(AuthGuard, RolesGuard),
-    Roles("ADMINISTRADOR"),
+    Roles("ADMIN"),
     Controller("roles"),
     __metadata("design:paramtypes", [RolService])
 ], RolController);

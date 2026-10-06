@@ -28,12 +28,12 @@ export class AuthService {
     const u = await this.findByDniWithPassword(dto.dni.trim());
     if (!u) throw new UnauthorizedException("Usuario no encontrado por DNI");
     if (!u.activo) throw new UnauthorizedException("El usuario está inactivo");
-
+/*
     if (dto.rol && u.role?.nombre !== dto.rol)
       throw new UnauthorizedException(
         `No tenés permisos para ingresar como ${dto.rol}`,
       );
-
+*/
     const valid = await bcrypt.compare(dto.password, u.passwordHash);
     if (!valid) throw new UnauthorizedException("La contraseña no coincide");
 

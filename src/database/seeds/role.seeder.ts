@@ -5,7 +5,7 @@ export async function seedRoles(dataSource: DataSource): Promise<Role[]> {
   const repo = dataSource.getRepository(Role);
 
   const rolesData = [
-    { nombre: "ADMIN", descripcion: "Administrador del sistema" },
+    { nombre: "ADMIN", descripcion: "ADMIN del sistema" },
     { nombre: "VENTAS", descripcion: "Vendedor de lotes" },
     { nombre: "COBRANZA", descripcion: "Cobrador de lotes" },    
     { nombre: "CLIENTE", descripcion: "Cliente comprador de lotes" },
